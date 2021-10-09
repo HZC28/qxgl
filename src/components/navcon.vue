@@ -40,14 +40,16 @@ export default {
         type: 'warning'
       })
         .then(() => {
+          // this.$router.push({ path: '/login' })
           setTimeout(() => {
+            localStorage.removeItem('token')
             this.$store.commit('logout', 'false')
             this.$router.push({ path: '/login' })
             this.$message({
               type: 'success',
               message: '已退出登录!'
             })
-          }, 1000)
+          }, 500)
           // loginout()
           //   .then(res => {
           //     if (res.success) {

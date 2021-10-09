@@ -1,4 +1,6 @@
 import axios from 'axios'
+import store from '../vuex/store.js';
+import router from '../router/index';
 let self=this
 import {
   Message,
@@ -17,7 +19,6 @@ request.interceptors.response.use(function (config) {
     return config;
   }, (error) =>{
     if (error.response.status === 401){
-      console.log(12354)
       try{
         Message({
           message: "登录过期",
@@ -27,7 +28,10 @@ request.interceptors.response.use(function (config) {
       }catch(err){
         console.log(err)
       }
+      console.log("self"+store)
+      store.commit('login', 'false')
       localStorage.removeItem('token');
+      router.push({ path: '/login' })
     }
     return Promise.reject(error);
   });

@@ -111,7 +111,6 @@ export default {
                       }
                     }
                   })
-                  console.log(a)
                   result.push(a)
                   break;
                 }
@@ -120,6 +119,7 @@ export default {
             console.log(result)
             localStorage.setItem("menus",JSON.stringify(result))
             this.logining = false
+            localStorage.setItem('token',res.data.data.token)
             this.$store.commit('login', 'true')
             this.$router.push({ path: '/goods/Goods' })
           })

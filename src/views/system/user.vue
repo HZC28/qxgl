@@ -136,6 +136,7 @@ import {
   UserDeptdeptTree,
   UserChangeDept
 } from '../../api/userMG'
+import {test} from '../../api/self/user.js'
 import Pagination from '../../components/Pagination'
 export default {
   data() {
@@ -253,6 +254,9 @@ export default {
    */
   created() {
     this.getdata(this.formInline)
+    test().then(res=>{
+      console.log(res)
+    })
   },
 
   /**
